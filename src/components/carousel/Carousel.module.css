@@ -1,0 +1,10 @@
+.slider {
+    text-align: center;
+    height: 250px;
+    line-height: 250px;
+    overflow: hidden;
+}
+
+.slider img {
+    height: 250px;
+}

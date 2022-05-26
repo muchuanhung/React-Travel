@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Lofty';
+  src: local('Lofty'), url(./assets/fonts/Loftygoals-Regular.otf) format('truetype');
+}
