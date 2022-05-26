@@ -24,7 +24,7 @@
 .main-header {
   height: 4rem;
   line-height: 4rem;
-  width: 88%;
+  padding: 1.25rem;
   margin: 0 auto;
 }
 
@@ -50,6 +50,7 @@
 }
 
 .main-menu {
+  margin: 0 auto;
   padding: 0 6% !important;
   background-color: #fee370 !important;
   color: white !important;
