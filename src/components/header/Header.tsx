@@ -3,8 +3,20 @@ import styles from "./Header.module.css";
 import logo from "../../assets/tripadvisor.svg";
 import { Layout, Typography, Input, Menu, Button, Dropdown } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
+//引入hook鉤子函數
+import {
+  useHistory,
+  useLocation,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
 
+//
 export const Header: React.FC = () => {
+  const history = useHistory();
+  const location = useLocation();
+  const params = useParams();
+  const match = useRouteMatch();
   return (
     <div className={styles["app-header"]}>
       {/* top-header */}
@@ -23,17 +35,20 @@ export const Header: React.FC = () => {
             語言
           </Dropdown.Button>
           <Button.Group className={styles["button-group"]}>
-            <Button>註冊</Button>
-            <Button>登入</Button>
+            <Button onClick={() => history.push("register")}>註冊</Button>
+            <Button onClick={() => history.push("signin")}>登入</Button>
           </Button.Group>
         </div>
       </div>
 
       <Layout.Header className={styles["main-header"]}>
-        <img src={logo} alt="logo" className={styles["App-logo"]} />
-        <Typography.Title level={4} className={styles.title}>
-          Holiday Travel
-        </Typography.Title>
+        <span onClick={() => history.push("/")}>
+          <img src={logo} alt="logo" className={styles["App-logo"]} />
+          <Typography.Title level={4} className={styles.title}>
+            Holiday Travel
+          </Typography.Title>
+        </span>
+
         <Input.Search
           placeholder={"請輸入旅遊目的地、主题、或關鍵字"}
           className={styles["search-input"]}

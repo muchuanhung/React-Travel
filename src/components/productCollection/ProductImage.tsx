@@ -1,8 +1,10 @@
 import React from "react";
 import { Image, Typography } from "antd";
+// 引入Hoc高階函數
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
 // interface dummmy-data element
-interface PropsType {
+interface PropsType extends RouteComponentProps {
     id: string | number;
     size: "large" | "small";
     imageSrc: string;
@@ -11,9 +13,10 @@ interface PropsType {
 }
 
 // 用slice短顯示title
-export const ProductImage: React.FC<PropsType> = ({id, size, imageSrc, price, title}) => {
+// 使用ＨＯＣ函數封裝component history push 推進哪一個頁面進入navigation
+const ProductImageComponent: React.FC<PropsType> = ({id, size, imageSrc, price, title, history, location, match}) => {
     return (
-      <>
+      <div onClick={() => history.push(`detail/${id}`) }>
         {size === "large" ? (
           <Image src={imageSrc} height={285} width={490} style={{ borderRadius:"5px" }} />
         ) : (
@@ -27,6 +30,8 @@ export const ProductImage: React.FC<PropsType> = ({id, size, imageSrc, price, ti
             $ {price} 起
           </Typography.Text>
         </div>
-      </>
+      </div>
     );
 }
+
+export const ProductImage = withRouter(ProductImageComponent);
