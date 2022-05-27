@@ -11,7 +11,6 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 
-//
 export const Header: React.FC = () => {
   const history = useHistory();
   const location = useLocation();
