@@ -20,7 +20,7 @@ const companies = [
 export const BusinessPartners: React.FC = (props) => {
   return (
     <div className={styles.content}>
-      <div style={{ backgroundColor: "white" }}>
+      <div style={{ backgroundColor: "white", marginTop: "30px", padding: "20px" }}>
         <Divider orientation="left">
           <Typography.Title level={3}>合作廠商</Typography.Title>
         </Divider>
