@@ -33,10 +33,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-type PropsType = RouteComponentProps & // react-router 路由props类型
-  WithTranslation & // i18n props类型
-  ReturnType<typeof mapStateToProps> & // redux store 映射类型 
-  ReturnType<typeof mapDispatchToProps>; // redux dispatch 映射类型 
+// 定義props類型
+type PropsType = RouteComponentProps & // react-router 路由props類型
+  WithTranslation & // i18n props類型
+  ReturnType<typeof mapStateToProps> & // redux store 映射類型
+  ReturnType<typeof mapDispatchToProps>; // redux dispatch 映射類型
 
 class HeaderComponnet extends React.Component<PropsType> {
   // 導入click事件與dispatch異位回傳的action

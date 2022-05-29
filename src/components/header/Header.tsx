@@ -10,32 +10,52 @@ import {
   useParams,
   useRouteMatch,
 } from "react-router-dom";
+import { useSelector } from "../../redux/hooks";
+import { useDispatch } from "react-redux";
+import { Dispatch } from "redux";
+import {
+  LanguageActionTypes,
+  changeLanguageActionCreator,
+} from "../../redux/language/languageActions";
+import { useTranslation } from "react-i18next";
 
 export const Header: React.FC = () => {
   const history = useHistory();
   const location = useLocation();
   const params = useParams();
   const match = useRouteMatch();
+  const language = useSelector((state) => state.language);
+  const languageList = useSelector((state) => state.languageList);
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
+
+  const menuClickHandler = (e) => {
+    console.log(e);
+    dispatch(changeLanguageActionCreator(e.key));
+  };
+
   return (
     <div className={styles["app-header"]}>
       {/* top-header */}
       <div className={styles["top-header"]}>
         <div className={styles.inner}>
-          <Dropdown.Button
-            style={{ marginLeft: 15 }}
-            overlay={
-              <Menu>
-                <Menu.Item>中文</Menu.Item>
-                <Menu.Item>English</Menu.Item>
-              </Menu>
-            }
-            icon={<GlobalOutlined />}
-          >
-            語言
-          </Dropdown.Button>
+        <Dropdown.Button
+              style={{ marginLeft: 15 }}
+              overlay={
+                /* 加入點擊事件的監聽action */
+                <Menu onClick={menuClickHandler}>
+                 {languageList.map((l) => {
+                  return <Menu.Item key={l.code}>{l.name}</Menu.Item>;
+                })}
+                </Menu>
+              }
+              icon={<GlobalOutlined />}
+            >
+              {language === "zh" ? "中文" : "English"}
+            </Dropdown.Button>
           <Button.Group className={styles["button-group"]}>
-            <Button onClick={() => history.push("register")}>註冊</Button>
-            <Button onClick={() => history.push("signin")}>登入</Button>
+            <Button onClick={() => history.push("register")}> {t("header.register")} </Button>
+            <Button onClick={() => history.push("signin")}> {t("header.signin")} </Button>
           </Button.Group>
         </div>
       </div>
@@ -44,7 +64,7 @@ export const Header: React.FC = () => {
         <span onClick={() => history.push("/")}>
           <img src={logo} alt="logo" className={styles["App-logo"]} />
           <Typography.Title level={4} className={styles.title}>
-            Holiday Travel
+            {t("header.title")}
           </Typography.Title>
         </span>
 
@@ -54,17 +74,17 @@ export const Header: React.FC = () => {
         />
       </Layout.Header>
       <Menu mode={"horizontal"} className={styles["main-menu"]}>
-        <Menu.Item key={1}>團體</Menu.Item>
-        <Menu.Item key={2}>機票</Menu.Item>
-        <Menu.Item key={3}>訂房</Menu.Item>
-        <Menu.Item key="4"> 自由行 </Menu.Item>
-        <Menu.Item key="5"> 主題旅遊 </Menu.Item>
-        <Menu.Item key="6"> 郵輪 </Menu.Item>
-        <Menu.Item key="7"> 酒店+景點 </Menu.Item>
-        <Menu.Item key="8"> 當地旅行 </Menu.Item>
-        <Menu.Item key="9"> 高鐵旅行 </Menu.Item>
-        <Menu.Item key="10"> 票卷旅遊 </Menu.Item>
-        <Menu.Item key="11"> 簽證 </Menu.Item>
+      <Menu.Item key={1}> {t("header.group")} </Menu.Item>
+          <Menu.Item key={2}> {t("header.airplane")} </Menu.Item>
+          <Menu.Item key={3}> {t("header.booking")} </Menu.Item>
+          <Menu.Item key="4"> {t("header.backpack")} </Menu.Item>
+          <Menu.Item key="5"> {t("header.subject")} </Menu.Item>
+          <Menu.Item key="6"> {t("header.cruise")} </Menu.Item>
+          <Menu.Item key="7"> {t("header.hotel")} </Menu.Item>
+          <Menu.Item key="8"> {t("header.local")} </Menu.Item>
+          <Menu.Item key="9"> {t("header.highway")} </Menu.Item>
+          <Menu.Item key="10"> {t("header.ticket")} </Menu.Item>
+          <Menu.Item key="11"> {t("header.visa")} </Menu.Item>
       </Menu>
     </div>
   );
