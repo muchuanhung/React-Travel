@@ -13,32 +13,32 @@ import { LanguageState } from "../../redux/language/languageReducer";
 import { withTranslation, WithTranslation } from "react-i18next";
 // 導入action集中工廠
 import { changeLanguageActionCreator } from "../../redux/language/languageActions";
+import { RootState } from "../../redux/store";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
-// 繼承languagereducer裡面定義好的state接口
-interface State extends LanguageState {}
-
-// 宣告component繼承react.component然後泛型代入routecomponentprops
-// 使用store 保存本地變量get.state
-class HeaderComponnet extends React.Component<RouteComponentProps & WithTranslation, State> {
-  // 導入構造函數
-  constructor(props) {
-    super(props);
-    const storeState = store.getState();
-    this.state = {
-      language: storeState.language,
-      languageList: storeState.languageList,
-    };
-    store.subscribe(this.handleStoreChange);
+const mapStateToProps = (state: RootState) => {
+  return {
+    language: state.language,
+    languageList: state.languageList
   }
-  // 使用state的this.setstate更新函數
-  handleStoreChange = ()=>{
-    const storeState = store.getState();
-    this.setState({
-      language: storeState.language,
-      languageList: storeState.languageList,
-    });
-  }
+}
 
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    changeLanguage: (code: "zh" | "en") => {
+      const action = changeLanguageActionCreator(code);
+      dispatch(action);
+    },
+  };
+};
+
+type PropsType = RouteComponentProps & // react-router 路由props类型
+  WithTranslation & // i18n props类型
+  ReturnType<typeof mapStateToProps> & // redux store 映射类型 
+  ReturnType<typeof mapDispatchToProps>; // redux dispatch 映射类型 
+
+class HeaderComponnet extends React.Component<PropsType> {
   // 導入click事件與dispatch異位回傳的action
   // type 類型名稱 playload 任意類型的key 向store dispatch new state
   menuClickHandler = (e) => {
@@ -59,14 +59,14 @@ class HeaderComponnet extends React.Component<RouteComponentProps & WithTranslat
               overlay={
                 /* 加入點擊事件的監聽action */
                 <Menu onClick={this.menuClickHandler}>
-                  {this.state.languageList.map((l) => {
+                     {this.props.languageList.map((l) => {
                     return <Menu.Item key={l.code}>{l.name}</Menu.Item>;
                   })}
                 </Menu>
               }
               icon={<GlobalOutlined />}
             >
-              {this.state.language === "zh" ? "中文" : "English"}
+              {this.props.language === "zh" ? "中文" : "English"}
             </Dropdown.Button>
             <Button.Group className={styles["button-group"]}>
               <Button onClick={() => history.push("register")}>{t("header.register")}</Button>
@@ -106,4 +106,6 @@ class HeaderComponnet extends React.Component<RouteComponentProps & WithTranslat
   }
 }
 
-export const Header = withTranslation()(withRouter(HeaderComponnet));
+export const Header = connect(mapStateToProps, mapDispatchToProps)(
+  withTranslation()(withRouter(HeaderComponnet))
+);
