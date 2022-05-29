@@ -1,0 +1,29 @@
+{
+    "header": {
+        "title": "Holiday Travel",
+        "register":"Register",
+        "signin":"Sign In",
+        "home_page": "Home",
+        "group": "Group",
+        "airplane": "Airplane",
+        "booking": "Booking",
+        "backpack": "Backpack",
+        "subject": "Subject",
+        "cruise": "Cruise",
+        "hotel": "Hotel",
+        "local": "Local",
+        "highway": "Highway",
+        "ticket": "Ticket",
+        "visa":"Visa"
+    },
+    "footer": {
+        "detail" : "All rights reserved @ HolidayTravel.com"
+    },
+    "home_page": {
+        "hot_recommended": "Hot Recommended",
+        "best_schedule": "New arrival",
+        "domestic_travel": "Domestic travel",
+        "joint_venture": "Joint Venture",
+        "start_from": "(start from)"
+    }
+}

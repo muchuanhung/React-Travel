@@ -1,0 +1,29 @@
+{
+    "header": {
+        "title": "假期旅遊",
+        "register":"註冊",
+        "signin":"登入",
+        "home_page": "旅遊首页",
+        "group": "團體",
+        "airplane": "機票",
+        "booking": "訂房",
+        "backpack": "自由行",
+        "subject": "主題旅遊",
+        "cruise": "郵輪",
+        "hotel": "酒店+景點",
+        "local": "當地旅行",
+        "highway": "高鐵旅行 ",
+        "ticket": "票卷旅遊",
+        "visa":"簽證"
+    },
+    "footer": {
+        "detail" : "版權所有 @ 假期旅遊"
+    },
+    "home_page": {
+        "hot_recommended": "熱門推薦",
+        "best_schedule": "精選行程",
+        "domestic_travel": "國內外旅遊推薦",
+        "joint_venture": "合作廠商",
+        "start_from": "(起)"
+    }
+}
