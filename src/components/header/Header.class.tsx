@@ -8,9 +8,11 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 // 引入store倉庫
 import store from "../../redux/store";
 // 引入語言reducer
-import { LanguageState } from "../../redux/languageReducer";
+import { LanguageState } from "../../redux/language/languageReducer";
 // 引入語言切換的高階函數
 import { withTranslation, WithTranslation } from "react-i18next";
+// 導入action集中工廠
+import { changeLanguageActionCreator } from "../../redux/language/languageActions";
 
 // 繼承languagereducer裡面定義好的state接口
 interface State extends LanguageState {}
@@ -41,10 +43,7 @@ class HeaderComponnet extends React.Component<RouteComponentProps & WithTranslat
   // type 類型名稱 playload 任意類型的key 向store dispatch new state
   menuClickHandler = (e) => {
     console.log(e);
-    const action = {
-      type: "change_language",
-      payload: e.key,
-    };
+    const action = changeLanguageActionCreator(e.key)
     store.dispatch(action);
   };
 
