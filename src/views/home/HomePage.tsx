@@ -9,19 +9,72 @@ import {
   BusinessPartners,
 } from "../../components";
 // 導入類似Bootstrap Grid-layout-system
-import { Row, Col, Typography } from "antd";
-// 導入Product mock-data
-import { productList1, productList2, productList3 } from "./mockups";
+import { Row, Col, Typography, Spin } from "antd";
+// 導入Postman API資料
+
 import sideImage from "../../assets/images/sider_1.png";
 import sideImage2 from "../../assets/images/sider_2.png";
 import sideImage3 from "../../assets/images/sider_3.png";
 // 引入語言切換的高階函數
 import { withTranslation, WithTranslation } from "react-i18next";
+import axios from "axios";
 
-class HomePageComponent extends React.Component<WithTranslation> {
+//定義state接口
+interface State {
+  loading: boolean;
+  error: string | null;
+  productList: any[];
+}
+
+class HomePageComponent extends React.Component<WithTranslation, State> {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      error: null,
+      productList: [],
+    };
+  }
+
+  // 創造生命週期函數-api抓資料的寫法
+  // api 抓取錯誤使用try & catch
+  async componentDidMount() {
+    try {
+      const { data } = await axios.get(
+        "http://123.56.149.216:8089/api/productCollections"
+      );
+      this.setState({
+        loading: false,
+        error: null,
+        productList: data,
+      });
+    } catch (error) {
+      this.setState({
+        error: null,
+        loading: false,
+      });
+    }
+  }
+
   render() {
     // console.log(this.props.t)
     const { t } = this.props;
+    const { productList, loading, error } = this.state;
+    if (loading) {
+      return (
+        <Spin
+          size="large"
+          style={{
+            margin: "200 auto",
+            width: "100%",
+          }}
+        />
+      );
+    }
+    if (error) {
+      return <div>網站錯誤：{error}</div>;
+    }
     return (
       <div className={styles.App}>
         <Header />
@@ -47,7 +100,7 @@ class HomePageComponent extends React.Component<WithTranslation> {
               </Typography.Title>
             }
             sideImage={sideImage}
-            products={productList1}
+            products={productList[0].touristRoutes}
           />
           <ProductCollection
             title={
@@ -56,7 +109,7 @@ class HomePageComponent extends React.Component<WithTranslation> {
               </Typography.Title>
             }
             sideImage={sideImage2}
-            products={productList2}
+            products={productList[1].touristRoutes}
           />
           <ProductCollection
             title={
@@ -65,7 +118,7 @@ class HomePageComponent extends React.Component<WithTranslation> {
               </Typography.Title>
             }
             sideImage={sideImage3}
-            products={productList3}
+            products={productList[2].touristRoutes}
           />
           <BusinessPartners />
         </div>
