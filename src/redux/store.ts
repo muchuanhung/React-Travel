@@ -16,8 +16,13 @@ const rootReducer = combineReducers({
 
 })
 
-const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));
-
-export type RootState = ReturnType<typeof store.getState>
-
-export default store;
+// 使用redux_toolkit的configurestore
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), actionLog],
+    devTools: true,
+  });
+  
+  export type RootState = ReturnType<typeof store.getState>
+  
+  export default store;

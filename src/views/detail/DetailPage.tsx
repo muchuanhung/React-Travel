@@ -7,6 +7,9 @@ import { Spin, Row, Col, Divider, Typography, DatePicker, Space, Anchor, Menu } 
 import styles from "./DetailPage.module.css";
 import { Header, Footer, ProductIntro, ProductComments } from "../../components";
 import { commentMockData } from "./mockup";
+import { productDetailSlice, getProductDetail } from "../../redux/productDetail/slice";
+import { useSelector } from "../../redux/hooks";
+import { useDispatch } from "react-redux";
 
 
 const { RangePicker } = DatePicker;
@@ -17,26 +20,15 @@ interface MatchParams {
 
 export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (props) => {
   const { touristRouteId } = useParams<MatchParams>();
-  const [loading, setLoading] = useState<boolean>(true);
-  const [product, setProduct] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
+  const loading = useSelector((state) => state.productDetail.loading);
+  const error = useSelector((state) => state.productDetail.error);
+  const product = useSelector((state) => state.productDetail.data);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const { data } = await axios.get(
-          `http://123.56.149.216:8089/api/touristRoutes/${touristRouteId}`
-        );
-        setProduct(data);
-        setLoading(false);
-      } catch (error) {
-        // @ts-ignore：无法被执行的代码的错误
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-    fetchData();
+    // @ts-ignore：无法被执行的代码的错误
+    dispatch(getProductDetail(touristRouteId))
   }, []);
   if (loading) {
     return (
