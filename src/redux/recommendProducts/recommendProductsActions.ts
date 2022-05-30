@@ -64,10 +64,11 @@ export const giveMeDataActionCreator = (): ThunkAction<
   dispatch(fetchRecommendProductStartActionCreator());
   try {
     const { data } = await axios.get(
-      "http://123.56.149.216:8080/api/productCollections"
+      "http://123.56.149.216:8089/api/productCollections"
     );
     dispatch(fetchRecommendProductSuccessActionCreator(data));
   } catch (error) {
+    // @ts-ignore：无法被执行的代码的错误
     dispatch(fetchRecommendProductFailActionCreator(error.message));
   }
 };
