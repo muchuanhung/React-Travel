@@ -10,57 +10,44 @@ import {
 } from "../../components";
 // 導入類似Bootstrap Grid-layout-system
 import { Row, Col, Typography, Spin } from "antd";
-// 導入Postman API資料
-
 import sideImage from "../../assets/images/sider_1.png";
 import sideImage2 from "../../assets/images/sider_2.png";
 import sideImage3 from "../../assets/images/sider_3.png";
 // 引入語言切換的高階函數
 import { withTranslation, WithTranslation } from "react-i18next";
 import axios from "axios";
+import { connect } from "react-redux";
+import { RootState } from "../../redux/store";
+import { giveMeDataActionCreator } from "../../redux/recommendProducts/recommendProductsActions";
 
-//定義state接口
-interface State {
-  loading: boolean;
-  error: string | null;
-  productList: any[];
-}
-
-class HomePageComponent extends React.Component<WithTranslation, State> {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-      error: null,
-      productList: [],
-    };
+const mapStateToProps = (state: RootState) => {
+  return {
+    loading: state.recommendProducts.loading,
+    error: state.recommendProducts.error,
+    productList: state.recommendProducts.productList
   }
+};
 
-  // 創造生命週期函數-api抓資料的寫法
-  // api 抓取錯誤使用try & catch
-  async componentDidMount() {
-    try {
-      const { data } = await axios.get(
-        "http://123.56.149.216:8089/api/productCollections"
-      );
-      this.setState({
-        loading: false,
-        error: null,
-        productList: data,
-      });
-    } catch (error) {
-      this.setState({
-        error: null,
-        loading: false,
-      });
+const mapDispatchToProps = (dispatch) => {
+  return {
+    giveMeData: () => {
+      dispatch(giveMeDataActionCreator());
     }
+  };
+};
+
+type PropsType = WithTranslation &
+  ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
+
+class HomePageComponent extends React.Component<PropsType> {
+  componentDidMount() {
+    this.props.giveMeData();
   }
 
   render() {
     // console.log(this.props.t)
-    const { t } = this.props;
-    const { productList, loading, error } = this.state;
+    const { t, productList, loading, error } = this.props;
     if (loading) {
       return (
         <Spin
@@ -129,4 +116,7 @@ class HomePageComponent extends React.Component<WithTranslation, State> {
 }
 
 // 括號語言命名空間 / 組件
-export const HomePage = withTranslation()(HomePageComponent);
+export const HomePage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTranslation()(HomePageComponent));
