@@ -44,8 +44,7 @@ class HeaderComponnet extends React.Component<PropsType> {
   // type 類型名稱 playload 任意類型的key 向store dispatch new state
   menuClickHandler = (e) => {
     console.log(e);
-    const action = changeLanguageActionCreator(e.key)
-    store.dispatch(action);
+    this.props.changeLanguage(e.key)
   };
 
   render() {

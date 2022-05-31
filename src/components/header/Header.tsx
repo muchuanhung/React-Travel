@@ -52,7 +52,7 @@ export const Header: React.FC = () => {
   };
 
   const onLogout = () => {
-    // @ts-ignore：无法被执行的代码的错误
+   
     dispatch(userSlice.actions.logOut())
     history.push("/")
   }

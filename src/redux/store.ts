@@ -9,7 +9,16 @@ import { productDetailSlice } from "./productDetail/slice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { productSearchSlice } from "./productSearch/slice";
 import { userSlice } from "./user/slice";
+// 導入組件登入持久化
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
+// 持久化的對象
+const persistConfig = {
+    key: "root",
+    storage,
+    whitelist: ["user"]
+  }
 
 // 所有reducer的集中地
 const rootReducer = combineReducers({
@@ -20,6 +29,9 @@ const rootReducer = combineReducers({
     user: userSlice.reducer
 })
 
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+
 // 使用redux_toolkit的configurestore
 const store = configureStore({
     reducer: rootReducer,
@@ -27,6 +39,8 @@ const store = configureStore({
     devTools: true,
   });
   
-  export type RootState = ReturnType<typeof store.getState>
-  
-  export default store;
+const persistor = persistStore(store)
+
+export type RootState = ReturnType<typeof store.getState>
+
+export default { store, persistor };

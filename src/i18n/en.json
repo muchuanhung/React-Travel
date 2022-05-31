@@ -14,7 +14,10 @@
         "local": "Local",
         "highway": "Highway",
         "ticket": "Ticket",
-        "visa":"Visa"
+        "visa":"Visa",
+        "shoppingCart": "Shopping Cart",
+        "signOut": "Sign Out",
+        "welcome": "Welcome back "
     },
     "footer": {
         "detail" : "All rights reserved @ HolidayTravel.com"
