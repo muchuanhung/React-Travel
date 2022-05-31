@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 import { actionLog } from "./middlewares/actionLog";
 import { productDetailSlice } from "./productDetail/slice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { productSearchSlice } from "./productSearch/slice";
 
 // 所有reducer的集中地
 const rootReducer = combineReducers({

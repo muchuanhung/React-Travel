@@ -19,20 +19,21 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { RootState } from "../../redux/store";
 import { giveMeDataActionCreator } from "../../redux/recommendProducts/recommendProductsActions";
+import { MainLayout } from "../../layouts/mainLayout";
 
 const mapStateToProps = (state: RootState) => {
   return {
     loading: state.recommendProducts.loading,
     error: state.recommendProducts.error,
-    productList: state.recommendProducts.productList
-  }
+    productList: state.recommendProducts.productList,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     giveMeData: () => {
       dispatch(giveMeDataActionCreator());
-    }
+    },
   };
 };
 
@@ -63,57 +64,48 @@ class HomePageComponent extends React.Component<PropsType> {
       return <div>網站錯誤：{error}</div>;
     }
     return (
-      <div className={styles.App}>
-        <Header />
-        {/* 页面内容 Main-content */}
-        <div className={styles["page-content"]}>
-          {/* Banner */}
-          <Row style={{ margin: 20 }}>
-            <Col span={4}>
-              {/* sidemenu */}
-              <SideMenu />
-            </Col>
-            <Col span={20}>
-              {/* swiper 輪播系統 */}
-              <Carousel />
-            </Col>
-          </Row>
-
-          {/* Product-collection */}
-          <ProductCollection
-            title={
-              <Typography.Title level={3} type="warning">
-                {t("home_page.hot_recommended")}
-              </Typography.Title>
-            }
-            sideImage={sideImage}
-            products={productList[0].touristRoutes}
-          />
-          <ProductCollection
-            title={
-              <Typography.Title level={3} type="danger">
-                {t("home_page.best_schedule")}
-              </Typography.Title>
-            }
-            sideImage={sideImage2}
-            products={productList[1].touristRoutes}
-          />
-          <ProductCollection
-            title={
-              <Typography.Title level={3} type="success">
-                {t("home_page.domestic_travel")}
-              </Typography.Title>
-            }
-            sideImage={sideImage3}
-            products={productList[2].touristRoutes}
-          />
-          <BusinessPartners />
-        </div>
-        <Footer />
-      </div>
+      <MainLayout>
+        <Row style={{ marginTop: 20 }}>
+          <Col span={6}>
+            <SideMenu />
+          </Col>
+          <Col span={18}>
+            <Carousel />
+          </Col>
+        </Row>
+        <ProductCollection
+          title={
+            <Typography.Title level={3} type="warning">
+              {t("home_page.hot_recommended")}
+            </Typography.Title>
+          }
+          sideImage={sideImage}
+          products={productList[0].touristRoutes}
+        />
+        <ProductCollection
+          title={
+            <Typography.Title level={3} type="danger">
+              {t("home_page.new_arrival")}
+            </Typography.Title>
+          }
+          sideImage={sideImage2}
+          products={productList[1].touristRoutes}
+        />
+        <ProductCollection
+          title={
+            <Typography.Title level={3} type="success">
+              {t("home_page.domestic_travel")}
+            </Typography.Title>
+          }
+          sideImage={sideImage3}
+          products={productList[2].touristRoutes}
+        />
+        <BusinessPartners />
+      </MainLayout>
     );
   }
 }
+
 
 // 括號語言命名空間 / 組件
 export const HomePage = connect(
