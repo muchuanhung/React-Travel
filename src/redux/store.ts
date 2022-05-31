@@ -8,13 +8,16 @@ import { actionLog } from "./middlewares/actionLog";
 import { productDetailSlice } from "./productDetail/slice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { productSearchSlice } from "./productSearch/slice";
+import { userSlice } from "./user/slice";
+
 
 // 所有reducer的集中地
 const rootReducer = combineReducers({
     language: languageReducer,
     recommendProducts: recommendProductsReducer,
-    productDetail: productDetailSlice.reducer
-
+    productDetail: productDetailSlice.reducer,
+    productSearch: productSearchSlice.reducer,
+    user: userSlice.reducer
 })
 
 // 使用redux_toolkit的configurestore

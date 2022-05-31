@@ -14,7 +14,10 @@
         "local": "當地旅行",
         "highway": "高鐵旅行 ",
         "ticket": "票卷旅遊",
-        "visa":"簽證"
+        "visa":"簽證",
+        "shoppingCart": "購物車",
+        "signOut": "登出",
+        "welcome": "歡迎回来 "
     },
     "footer": {
         "detail" : "版權所有 @ 假期旅遊"
