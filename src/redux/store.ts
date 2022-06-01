@@ -13,6 +13,7 @@ import { userSlice } from "./user/slice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+
 // 持久化的對象
 const persistConfig = {
     key: "root",
@@ -22,22 +23,23 @@ const persistConfig = {
 
 // 所有reducer的集中地
 const rootReducer = combineReducers({
-    language: languageReducer,
-    recommendProducts: recommendProductsReducer,
-    productDetail: productDetailSlice.reducer,
-    productSearch: productSearchSlice.reducer,
-    user: userSlice.reducer
+  language: languageReducer,
+  recommendProducts: recommendProductsReducer,
+  productDetail: productDetailSlice.reducer,
+  productSearch: productSearchSlice.reducer,
+  user: userSlice.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 
 // 使用redux_toolkit的configurestore
+// const store = createStore(rootReducer, applyMiddleware(thunk, actionLog));
 const store = configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), actionLog],
-    devTools: true,
-  });
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), actionLog],
+  devTools: true,
+});
   
 const persistor = persistStore(store)
 
