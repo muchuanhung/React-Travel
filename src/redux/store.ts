@@ -12,6 +12,8 @@ import { userSlice } from "./user/slice";
 // 導入組件登入持久化
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { shoppingCartSlice } from "./shoppingCart/slice";
+import { orderSlice } from "./order/slice";
 
 
 // 持久化的對象
@@ -27,7 +29,10 @@ const rootReducer = combineReducers({
   recommendProducts: recommendProductsReducer,
   productDetail: productDetailSlice.reducer,
   productSearch: productSearchSlice.reducer,
-  user: userSlice.reducer
+  user: userSlice.reducer,
+  shoppingCart: shoppingCartSlice.reducer,
+  order: orderSlice.reducer
+  
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
