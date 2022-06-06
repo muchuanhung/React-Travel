@@ -17,7 +17,7 @@ export const getShoppingCart = createAsyncThunk(
   "shoppingCart/getShoppingCart",
   async (jwt: string, thunkAPI) => {
     const { data } = await axios.get(
-      `http://123.56.149.216:8080/api/shoppingCart`,
+      `http://123.56.149.216:8089/api/shoppingCart`,
       {
         headers: {
           Authorization: `bearer ${jwt}`,
@@ -32,7 +32,7 @@ export const addShoppingCartItem = createAsyncThunk(
   "shoppingCart/addShoppingCartItem",
   async (parameters: { jwt: string; touristRouteId: string }, thunkAPI) => {
     const { data } = await axios.post(
-      `http://123.56.149.216:8080/api/shoppingCart/items`,
+      `http://123.56.149.216:8089/api/shoppingCart/items`,
       {
         touristRouteId: parameters.touristRouteId,
       },
@@ -46,11 +46,29 @@ export const addShoppingCartItem = createAsyncThunk(
   }
 );
 
+
+export const checkout = createAsyncThunk(
+  "shoppingCart/checkout",
+  async (jwt: string, thunkAPI) => {
+    const { data } = await axios.post(
+      `http://123.56.149.216:8089/api/shoppingCart/checkout`,
+      null,
+      {
+        headers: {
+          Authorization: `bearer ${jwt}`,
+        },
+      }
+    );
+    return data;
+  }
+);
+
+
 export const clearShoppingCartItem = createAsyncThunk(
   "shoppingCart/clearShoppingCartItem",
   async (parameters: { jwt: string; itemIds: number[] }, thunkAPI) => {
     return await axios.delete(
-      `http://123.56.149.216:8080/api/shoppingCart/items/(${parameters.itemIds.join(
+      `http://123.56.149.216:8089/api/shoppingCart/items/(${parameters.itemIds.join(
         ","
       )})`,
       {
@@ -106,6 +124,21 @@ export const shoppingCartSlice = createSlice({
       state.error = null;
     },
     [clearShoppingCartItem.rejected.type]: (
+      state,
+      action: PayloadAction<string | null>
+    ) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+      [checkout.pending.type]: (state) => {
+      state.loading = true;
+    },
+    [checkout.fulfilled.type]: (state, action) => {
+      state.items = [];
+      state.loading = false;
+      state.error = null;
+    },
+    [checkout.rejected.type]: (
       state,
       action: PayloadAction<string | null>
     ) => {

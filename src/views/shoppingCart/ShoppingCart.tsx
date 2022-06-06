@@ -5,7 +5,11 @@ import { Row, Col, Affix } from "antd";
 import { ProductList, PaymentCard } from "../../components";
 import { useSelector } from "../../redux/hooks";
 import { useDispatch } from "react-redux";
-import { clearShoppingCartItem } from "../../redux/shoppingCart/slice";
+import {
+  clearShoppingCartItem,
+  checkout,
+} from "../../redux/shoppingCart/slice";
+import { useHistory } from "react-router-dom";
 
 export const ShoppingCartPage: React.FC = (props) => {
   // @ts-ignore：无法被执行的代码的错误
@@ -14,6 +18,7 @@ export const ShoppingCartPage: React.FC = (props) => {
   const shoppingCartItems = useSelector((s) => s.shoppingCart.items);
   const jwt = useSelector((s) => s.user.token) as string;
   const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <MainLayout>
@@ -41,7 +46,13 @@ export const ShoppingCartPage: React.FC = (props) => {
                   )
                   // js累加的方式
                   .reduce((a, b) => a + b, 0)}
-                onCheckout={() => {}}
+                onCheckout={() => {
+                  if (shoppingCartItems.length <= 0) {
+                    return;
+                  }
+                  dispatch(checkout(jwt));
+                  history.push("/placeOrder");
+                }}
                 // 清空購物車
                 onShoppingCartClear={() => {
                   dispatch(
