@@ -22,9 +22,8 @@ import jwt_decode, { JwtPayload as DefaultJwtPayload } from "jwt-decode";
 import { userSlice } from "../../redux/user/slice";
 
 interface JwtPayload extends DefaultJwtPayload {
-  username: string
+  username: string;
 }
-
 
 export const Header: React.FC = () => {
   const history = useHistory();
@@ -36,15 +35,20 @@ export const Header: React.FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const jwt = useSelector(s => s.user.token)
-  const [username, setUsername] = useState("")
+  const jwt = useSelector((s) => s.user.token);
+  const [username, setUsername] = useState("");
 
-  useEffect(()=>{
-    if(jwt){
-      const token = jwt_decode<JwtPayload>(jwt)
-      setUsername(token.username)
+  // @ts-ignore：无法被执行的代码的错误
+  const shoppingCartItems = useSelector((s) => s.shoppingCart.items);
+  // @ts-ignore：无法被执行的代码的错误
+  const shoppingCartLoading = useSelector((s) => s.shoppingCart.loading);
+
+  useEffect(() => {
+    if (jwt) {
+      const token = jwt_decode<JwtPayload>(jwt);
+      setUsername(token.username);
     }
-  }, [jwt])
+  }, [jwt]);
 
   const menuClickHandler = (e) => {
     console.log(e);
@@ -52,36 +56,41 @@ export const Header: React.FC = () => {
   };
 
   const onLogout = () => {
-    dispatch(userSlice.actions.logOut())
-    history.push("/")
-  }
+    dispatch(userSlice.actions.logOut());
+    history.push("/");
+  };
 
   return (
     <div className={styles["app-header"]}>
       {/* top-header */}
       <div className={styles["top-header"]}>
         <div className={styles.inner}>
-        <Dropdown.Button
-              style={{ marginLeft: 15 }}
-              overlay={
-                /* 加入點擊事件的監聽action */
-                <Menu onClick={menuClickHandler}>
-                 {languageList.map((l) => {
+          <Dropdown.Button
+            style={{ marginLeft: 15 }}
+            overlay={
+              /* 加入點擊事件的監聽action */
+              <Menu onClick={menuClickHandler}>
+                {languageList.map((l) => {
                   return <Menu.Item key={l.code}>{l.name}</Menu.Item>;
                 })}
-                </Menu>
-              }
-              icon={<GlobalOutlined />}
-            >
-              {language === "zh" ? "中文" : "English"}
-            </Dropdown.Button>
-            {jwt ? (
+              </Menu>
+            }
+            icon={<GlobalOutlined />}
+          >
+            {language === "zh" ? "中文" : "English"}
+          </Dropdown.Button>
+          {jwt ? (
             <Button.Group className={styles["button-group"]}>
               <span>
                 {t("header.welcome")}
                 <Typography.Text strong>{username}</Typography.Text>
               </span>
-              <Button onClick={() => history.push("/shoppingCart")}></Button>
+              <Button
+                loading={shoppingCartLoading}
+                onClick={() => history.push("/shoppingCart")}
+              >
+                {t("header.shoppingCart")}({shoppingCartItems.length})
+              </Button>
               <Button onClick={onLogout}>{t("header.signOut")}</Button>
             </Button.Group>
           ) : (
@@ -112,17 +121,17 @@ export const Header: React.FC = () => {
         />
       </Layout.Header>
       <Menu mode={"horizontal"} className={styles["main-menu"]}>
-      <Menu.Item key={1}> {t("header.group")} </Menu.Item>
-          <Menu.Item key={2}> {t("header.airplane")} </Menu.Item>
-          <Menu.Item key={3}> {t("header.booking")} </Menu.Item>
-          <Menu.Item key="4"> {t("header.backpack")} </Menu.Item>
-          <Menu.Item key="5"> {t("header.subject")} </Menu.Item>
-          <Menu.Item key="6"> {t("header.cruise")} </Menu.Item>
-          <Menu.Item key="7"> {t("header.hotel")} </Menu.Item>
-          <Menu.Item key="8"> {t("header.local")} </Menu.Item>
-          <Menu.Item key="9"> {t("header.highway")} </Menu.Item>
-          <Menu.Item key="10"> {t("header.ticket")} </Menu.Item>
-          <Menu.Item key="11"> {t("header.visa")} </Menu.Item>
+        <Menu.Item key={1}> {t("header.group")} </Menu.Item>
+        <Menu.Item key={2}> {t("header.airplane")} </Menu.Item>
+        <Menu.Item key={3}> {t("header.booking")} </Menu.Item>
+        <Menu.Item key="4"> {t("header.backpack")} </Menu.Item>
+        <Menu.Item key="5"> {t("header.subject")} </Menu.Item>
+        <Menu.Item key="6"> {t("header.cruise")} </Menu.Item>
+        <Menu.Item key="7"> {t("header.hotel")} </Menu.Item>
+        <Menu.Item key="8"> {t("header.local")} </Menu.Item>
+        <Menu.Item key="9"> {t("header.highway")} </Menu.Item>
+        <Menu.Item key="10"> {t("header.ticket")} </Menu.Item>
+        <Menu.Item key="11"> {t("header.visa")} </Menu.Item>
       </Menu>
     </div>
   );

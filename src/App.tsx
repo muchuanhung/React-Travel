@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./App.module.css";
 // 導入路由切換
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { HomePage, SignInPage, RegisterPage, DetailPage, SearchPage, ShoppingCartPage} from "./views";
+import {
+  HomePage,
+  SignInPage,
+  RegisterPage,
+  DetailPage,
+  SearchPage,
+  ShoppingCartPage,
+} from "./views";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "./redux/hooks";
+import { useDispatch } from "react-redux";
+import { getShoppingCart } from "./redux/shoppingCart/slice";
 
 // 設定路由private
 const PrivateRoute = ({ component, isAuthenticated, ...rest }) => {
@@ -13,15 +22,22 @@ const PrivateRoute = ({ component, isAuthenticated, ...rest }) => {
       React.createElement(component, props)
     ) : (
       <Redirect to={{ pathname: "/signIn" }} />
-    ); 
-  }
+    );
+  };
   return <Route render={routeComponent} {...rest} />;
-}
-
+};
 
 //Restful style router
 function App() {
   const jwt = useSelector((s) => s.user.token);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (jwt) {
+      dispatch(getShoppingCart(jwt));
+    }
+  }, [jwt]);
+
   return (
     <div className={styles.App}>
       <BrowserRouter>
