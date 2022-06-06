@@ -9,6 +9,7 @@ import {
   DetailPage,
   SearchPage,
   ShoppingCartPage,
+  PlaceOrderPage,
 } from "./views";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "./redux/hooks";
@@ -51,6 +52,11 @@ function App() {
             isAuthenticated={jwt !== null}
             path="/shoppingCart"
             component={ShoppingCartPage}
+          />
+          <PrivateRoute
+            isAuthenticated={jwt !== null}
+            path="/placeOrder"
+            component={PlaceOrderPage}
           />
           <Route render={() => <h1>404 Page not found</h1>} />
         </Switch>
