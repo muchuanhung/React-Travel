@@ -25,7 +25,7 @@ export const RegisterForm = () => {
       });
       history.push("/signIn/");
     } catch (error) {
-      alert("注册失败！");
+      alert("註冊失敗！");
     }
   };
 

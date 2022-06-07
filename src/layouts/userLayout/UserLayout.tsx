@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./UserLayout.module.css";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/tripadvisor.svg";
 import { Link } from "react-router-dom";
 import { CaretDownOutlined } from "@ant-design/icons";
 import { Layout, Menu, Dropdown, Button } from "antd";
@@ -16,12 +16,19 @@ export const UserLayout: React.FC = (props) => {
 
   return (
     <Layout className={styles["user-layout-container"]}>
+      <video autoPlay muted loop>
+        <source
+          src="https://res.cloudinary.com/df23zsanf/video/upload/v1654592571/Bike_-_72566_ra0th2.mp4"
+          type="video/webm"
+        />
+        Your browser does not support the video tag.
+      </video>{" "}
       <Header className={styles["header"]}>
         <div className={styles["lang"]}>
           <Dropdown overlay={menu}>
             <Button>
               {" "}
-              选择语言 <CaretDownOutlined />
+              選擇語言 <CaretDownOutlined />
             </Button>
           </Dropdown>
         </div>
@@ -30,17 +37,13 @@ export const UserLayout: React.FC = (props) => {
         <div className={styles["top"]}>
           <div className={styles["content-header"]}>
             <Link to="/">
-              <img alt="logo" className={styles["logo"]} src={logo} />
-              <span className={styles["title"]}>React 旅游网</span>
+              <img src={logo} alt="logo" className={styles["logo"]} />
+              <span className={styles["title"]}>假期旅遊</span>
             </Link>
-          </div>
-          <div className={styles["desc"]}>
-            慕课网 是我朝最具影响力的 线上课程学习网站
           </div>
           {props.children}
         </div>
       </Content>
-      <Footer style={{ textAlign: "center" }}>Footer就不写了，太累了</Footer>
     </Layout>
   );
 };

@@ -1,11 +1,16 @@
 .user-layout-container {
     height: 100vh;
-    background-image: url("https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg") !important;
-    background-size: 100% !important;  
-    background-repeat: no-repeat;
-    background-position: center 110px;
+    width: 100vw;
+    position: relative;
+    overflow: hidden; 
 }
 
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+   
+}
 .header {
     background: transparent !important;
 }
@@ -24,8 +29,11 @@
 }
 
 .content .top .content-header {
+    position: relative;
     height: 44px;
     line-height: 44px;
+    margin-bottom: 40px;
+
 }
 
 .content .top .content-header a {
@@ -33,22 +41,33 @@
 }
 
 .content .top .content-header .logo {
+    position: absolute;
+    left: 46.5%;
     height: 44px;
-    margin-right: 16px;
     vertical-align: top;
     float: none;
 }
 
-.content .top .content-header .title {
-    position: relative;
-    top: 2px;
-    color: #1890ff;
-    font-weight: 600;
-    font-size: 33px;
-    font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: no-preference) {
+    .logo {
+        animation: logo-spin infinite 20s linear;
+    }
 }
 
-.content .top .desc {
-    margin-top: 16px;
-    margin-bottom: 40px;
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.content .top .content-header .title {
+    position: absolute;
+    color: #5a5a5a;
+    font-weight: 600;
+    font-size: 33px;
+    font-family: Avenir, 'Lofty', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
