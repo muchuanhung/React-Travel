@@ -4,6 +4,7 @@ import logo from "../../assets/tripadvisor.svg";
 import { Link } from "react-router-dom";
 import { CaretDownOutlined } from "@ant-design/icons";
 import { Layout, Menu, Dropdown, Button } from "antd";
+
 const { Header, Footer, Content } = Layout;
 
 export const UserLayout: React.FC = (props) => {

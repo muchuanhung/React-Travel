@@ -70,7 +70,7 @@ export const RegisterForm = () => {
               if (!value || getFieldValue("password") === value) {
                 return Promise.resolve();
               }
-              return Promise.reject("密码确认不一致！");
+              return Promise.reject("密碼確認不一致！");
             },
           }),
         ]}
