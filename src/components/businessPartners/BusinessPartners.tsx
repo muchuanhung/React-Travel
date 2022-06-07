@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Typography, Divider } from "antd";
+import { Row, Col, Divider } from "antd";
 import styles from "./BusinessPartners.modules.css";
 import image1 from "../../assets/images/cereales-226142.png";
 import image2 from "../../assets/images/dominos-226179.png";
@@ -17,29 +17,32 @@ const companies = [
   { src: image6, title: "Kfc" },
 ];
 
-export const BusinessPartners: React.FC = (props) => {
+// 泛型接口對接API section標題
+interface PropsType {
+  title: JSX.Element;
+}
+
+export const BusinessPartners: React.FC<PropsType> = ({ title }) => {
   return (
-    <div className={styles.content}>
-      <div style={{ backgroundColor: "white", marginTop: "30px", padding: "20px" }}>
-        <Divider orientation="left">
-          <Typography.Title level={3}>合作廠商</Typography.Title>
-        </Divider>
-        <Row>
-          {companies.map((c, index) => (
-            <Col span={4} key={"bussiness-partner-" + index}>
-              <img
-                alt="bussiness-partner"
-                src={c.src}
-                style={{
-                  width: "80%",
-                  display: "block",
-                  margin: "0 auto",
-                }}
-              />
-            </Col>
-          ))}
-        </Row>
-      </div>
+    <div
+      style={{ backgroundColor: "white", marginTop: "30px", padding: "20px" }}
+    >
+      <Divider orientation="left">{title}</Divider>
+      <Row style={{ backgroundColor: "white" }}>
+        {companies.map((c, index) => (
+          <Col span={4} key={"bussiness-partner-" + index}>
+            <img
+              alt="bussiness-partner"
+              src={c.src}
+              style={{
+                width: "80%",
+                display: "block",
+                margin: "0 auto",
+              }}
+            />
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 };

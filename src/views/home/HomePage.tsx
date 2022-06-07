@@ -85,7 +85,7 @@ class HomePageComponent extends React.Component<PropsType> {
         <ProductCollection
           title={
             <Typography.Title level={3} type="danger">
-              {t("home_page.new_arrival")}
+              {t("home_page.best_schedule")}
             </Typography.Title>
           }
           sideImage={sideImage2}
@@ -100,12 +100,17 @@ class HomePageComponent extends React.Component<PropsType> {
           sideImage={sideImage3}
           products={productList[2].touristRoutes}
         />
-        <BusinessPartners />
+        <BusinessPartners
+          title={
+            <Typography.Title level={3} type="secondary">
+              {t("home_page.business_partner")}
+            </Typography.Title>
+          }
+        />
       </MainLayout>
     );
   }
 }
-
 
 // 括號語言命名空間 / 組件
 export const HomePage = connect(
