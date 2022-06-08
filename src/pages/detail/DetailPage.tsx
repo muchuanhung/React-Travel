@@ -33,6 +33,7 @@ import { useDispatch } from "react-redux";
 import { MainLayout } from "../../layouts/mainLayout";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { addShoppingCartItem } from "../../redux/shoppingCart/slice";
+import ScrollToTop from "react-scroll-to-top";
 
 const { RangePicker } = DatePicker;
 
@@ -72,7 +73,8 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
   }
   return (
     <MainLayout>
-      {/* 产品简介 与 日期选择 */}
+      <ScrollToTop />
+      {/* Product_content & Date_picker */}
       <div className={styles["product-intro-container"]}>
         <Row>
           <Col span={13}>
@@ -108,55 +110,55 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
       </div>
       {/* 锚点菜单 */}
       <Anchor className={styles["product-detail-anchor"]}>
-        <Menu mode="horizontal">
+        <Menu mode="horizontal" className={styles["product-detail-label"]}>
           <Menu.Item key="1">
-            <Anchor.Link href="#feature" title="产品特色"></Anchor.Link>
+            <Anchor.Link href="#feature" title="產品特色"></Anchor.Link>
           </Menu.Item>
           <Menu.Item key="3">
-            <Anchor.Link href="#fees" title="费用"></Anchor.Link>
+            <Anchor.Link href="#fees" title="費用"></Anchor.Link>
           </Menu.Item>
           <Menu.Item key="4">
-            <Anchor.Link href="#notes" title="预订须知"></Anchor.Link>
+            <Anchor.Link href="#notes" title="預定須知"></Anchor.Link>
           </Menu.Item>
           <Menu.Item key="5">
-            <Anchor.Link href="#comments" title="用户评价"></Anchor.Link>
+            <Anchor.Link href="#comments" title="用户評價"></Anchor.Link>
           </Menu.Item>
         </Menu>
       </Anchor>{" "}
-      {/* 产品特色 */}
+      {/* 產品特色 */}
       <div id="feature" className={styles["product-detail-container"]}>
         <Divider orientation={"center"}>
-          <Typography.Title level={3}>产品特色</Typography.Title>
+          <Typography.Title level={3}>產品特色</Typography.Title>
         </Divider>
         <div
           dangerouslySetInnerHTML={{ __html: product.features }}
           style={{ margin: 50 }}
         ></div>
       </div>
-      {/* 费用 */}
+      {/* 費用 */}
       <div id="fees" className={styles["product-detail-container"]}>
         <Divider orientation={"center"}>
-          <Typography.Title level={3}>费用</Typography.Title>
+          <Typography.Title level={3}>費用</Typography.Title>
         </Divider>
         <div
           dangerouslySetInnerHTML={{ __html: product.fees }}
           style={{ margin: 50 }}
         ></div>
       </div>
-      {/* 预订须知 */}
+      {/* 預定須知 */}
       <div id="notes" className={styles["product-detail-container"]}>
         <Divider orientation={"center"}>
-          <Typography.Title level={3}>预定须知</Typography.Title>
+          <Typography.Title level={3}>预定須知</Typography.Title>
         </Divider>
         <div
           dangerouslySetInnerHTML={{ __html: product.notes }}
           style={{ margin: 50 }}
         ></div>
       </div>
-      {/* 商品评价*/}
+      {/* 商品評價*/}
       <div id="comments" className={styles["product-detail-container"]}>
         <Divider orientation={"center"}>
-          <Typography.Title level={3}>用户评价</Typography.Title>
+          <Typography.Title level={3}>用户評價</Typography.Title>
         </Divider>
         <div style={{ margin: 40 }}>
           <ProductComments data={commentMockData} />

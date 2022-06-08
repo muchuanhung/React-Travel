@@ -1,8 +1,6 @@
 # React-travel
 
-#### This is a website
-
-of an ecommerce store built by React and Typescript.
+#### This is a website of an ecommerce store built by React and Typescript.
 
 #### ☞ ☞ Take a look at this [React-travel](https://muchuanhung.github.io/React-travel/). 👀
 
@@ -15,6 +13,8 @@ of an ecommerce store built by React and Typescript.
 - React Router Dom
 
 - Redux & Redux-Toolkit
+
+- i18n 語言切換
 
 - Jwt登入
 

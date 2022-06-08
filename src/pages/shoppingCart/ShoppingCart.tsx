@@ -10,6 +10,7 @@ import {
   checkout,
 } from "../../redux/shoppingCart/slice";
 import { useHistory } from "react-router-dom";
+import ScrollToTop from "react-scroll-to-top";
 
 export const ShoppingCartPage: React.FC = (props) => {
   const loading = useSelector((s) => s.shoppingCart.loading);
@@ -20,6 +21,7 @@ export const ShoppingCartPage: React.FC = (props) => {
 
   return (
     <MainLayout>
+      <ScrollToTop />
       <Row>
         {/* 购物车清单 */}
         <Col span={16}>

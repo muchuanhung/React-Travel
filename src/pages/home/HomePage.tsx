@@ -20,6 +20,7 @@ import { connect } from "react-redux";
 import { RootState } from "../../redux/store";
 import { giveMeDataActionCreator } from "../../redux/recommendProducts/recommendProductsActions";
 import { MainLayout } from "../../layouts/mainLayout";
+import ScrollToTop from "react-scroll-to-top";
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -65,6 +66,7 @@ class HomePageComponent extends React.Component<PropsType> {
     }
     return (
       <MainLayout>
+        <ScrollToTop />
         <Row style={{ marginTop: 20 }}>
           <Col span={6}>
             <SideMenu />
