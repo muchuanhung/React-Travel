@@ -3,6 +3,8 @@
 #### This is a website of an ecommerce store built by React and Typescript.
 
 #### ☞ ☞ Take a look at this [React-travel](https://muchuanhung.github.io/React-travel/). 👀
+![GITHUB](https://github.com/muchuanhung/React-travel/blob/main/React-travel%20(1).gif)
+
 
 #### 使用技術：
 
@@ -18,7 +20,6 @@
 
 - Jwt登入
 
-- Docker 應用
 
 ## 🏃‍ Project setup and run
 
