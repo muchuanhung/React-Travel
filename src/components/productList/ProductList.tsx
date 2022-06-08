@@ -111,19 +111,19 @@ export const ProductList: React.FC<PropsType> = ({
                 {item.discountPresent ? (
                   <>
                     <Text style={{ fontSize: 20, fontWeight: 400 }} delete>
-                      ¥ {item.originalPrice}
+                      $ {item.originalPrice}
                     </Text>
                     <Text
                       type="danger"
                       style={{ fontSize: 20, fontWeight: 400 }}
                     >
                       {" "}
-                      ¥ {item.price}
+                      $ {item.price}
                     </Text>
                   </>
                 ) : (
                   <Text style={{ fontSize: 20, fontWeight: 400 }}>
-                    ¥ {item.price}
+                    $ {item.price}
                   </Text>
                 )}
                 <Link to={"/detail/" + item.id}> {item.title}</Link>

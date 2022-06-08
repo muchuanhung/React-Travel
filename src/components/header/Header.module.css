@@ -18,7 +18,12 @@
 
 .button-group {
   float: right;
-  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.user-info{
+  padding: 0 0.5rem;
 }
 
 .main-header {

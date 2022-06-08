@@ -6,6 +6,20 @@ of an ecommerce store built by React and Typescript.
 
 #### ☞ ☞ Take a look at this [React-travel](https://muchuanhung.github.io/React-travel/). 👀
 
+#### 使用技術：
+
+- React & Typescript
+
+- React Hook
+
+- React Router Dom
+
+- Redux & Redux-Toolkit
+
+- Jwt登入
+
+- Docker 應用
+
 ## 🏃‍ Project setup and run
 
 ### Please clone the project

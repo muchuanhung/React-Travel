@@ -45,7 +45,7 @@ export const CheckOutCard: React.FC<PropsType> = ({
         item: i.touristRoute.title,
         amount: (
           <>
-            <Text delete>¥ {i.originalPrice} </Text>{" "}
+            <Text delete>$ {i.originalPrice} </Text>{" "}
             <Text type="danger" strong>
               $ {i.originalPrice * i.discountPresent}
             </Text>

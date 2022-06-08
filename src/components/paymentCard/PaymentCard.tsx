@@ -61,7 +61,7 @@ export const PaymentCard: React.FC<PropsType> = ({
       item: "特價",
       amount: (
         <Title type="danger" level={2}>
-          ¥ {price}
+          $ {price}
         </Title>
       ),
     },
