@@ -51,11 +51,9 @@ export const DetailPage: React.FC<RouteComponentProps<MatchParams>> = (
   const dispatch = useDispatch();
 
   const jwt = useSelector((s) => s.user.token) as string;
-  // @ts-ignore：无法被执行的代码的错误
   const shoppingCartLoading = useSelector((s) => s.shoppingCart.loading);
 
   useEffect(() => {
-    // @ts-ignore：无法被执行的代码的错误
     dispatch(getProductDetail(touristRouteId));
   }, []);
   if (loading) {

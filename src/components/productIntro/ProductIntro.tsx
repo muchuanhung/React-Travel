@@ -3,7 +3,6 @@ import React from "react";
 import { Typography, Carousel, Image, Rate, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
 
-//定義api 接口裡的數據
 interface PropsType {
   title: string;
   shortDescription: string;
@@ -15,7 +14,6 @@ interface PropsType {
   pictures: string[];
 }
 
-// 完成列配置
 const columns: ColumnsType<RowType> = [
   {
     title: "title",
@@ -32,7 +30,6 @@ const columns: ColumnsType<RowType> = [
   },
 ];
 
-// 完成行配置
 interface RowType {
   title: string;
   description: string | number | JSX.Element;

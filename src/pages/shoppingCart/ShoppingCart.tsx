@@ -12,9 +12,7 @@ import {
 import { useHistory } from "react-router-dom";
 
 export const ShoppingCartPage: React.FC = (props) => {
-  // @ts-ignore：无法被执行的代码的错误
   const loading = useSelector((s) => s.shoppingCart.loading);
-  // @ts-ignore：无法被执行的代码的错误
   const shoppingCartItems = useSelector((s) => s.shoppingCart.items);
   const jwt = useSelector((s) => s.user.token) as string;
   const dispatch = useDispatch();

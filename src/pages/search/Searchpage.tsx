@@ -14,27 +14,21 @@ interface MatchParams {
 
 export const SearchPage: React.FC = () => {
   const { keywords } = useParams<MatchParams>();
-  // @ts-ignore：无法被执行的代码的错误
   const loading = useSelector((state) => state.productSearch.loading);
-  // @ts-ignore：无法被执行的代码的错误
   const error = useSelector((s) => s.productSearch.error);
-  // @ts-ignore：无法被执行的代码的错误
   const pagination = useSelector((s) => s.productSearch.pagination);
-  // @ts-ignore：无法被执行的代码的错误
   const productList = useSelector((s) => s.productSearch.data);
 
   const dispatch = useDispatch();
   const location = useLocation();
 
-  useEffect(()=>{
-    // @ts-ignore：无法被执行的代码的错误
-    dispatch(searchProduct({nextPage:1, pageSize: 10, keywords}))
-  },[location])
+  useEffect(() => {
+    dispatch(searchProduct({ nextPage: 1, pageSize: 10, keywords }));
+  }, [location]);
 
-  const onPageChange = (nextPage, pageSize) =>{
-    // @ts-ignore：无法被执行的代码的错误
-    dispatch(searchProduct({nextPage, pageSize, keywords}))
-  }
+  const onPageChange = (nextPage, pageSize) => {
+    dispatch(searchProduct({ nextPage, pageSize, keywords }));
+  };
 
   if (loading) {
     return (
@@ -50,7 +44,7 @@ export const SearchPage: React.FC = () => {
   if (error) {
     return <div>網站錯誤：{error}</div>;
   }
-  
+
   return (
     <MainLayout>
       {/* 分类过滤器 */}

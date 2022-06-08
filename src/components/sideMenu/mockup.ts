@@ -1,6 +1,6 @@
 export const sideMenuList = [
   {
-    title: "主题旅游",
+    title: "主題旅遊",
     subMenu: [
       {
         title: "爸妈游",
@@ -17,7 +17,7 @@ export const sideMenuList = [
     ],
   },
   {
-    title: "周边游",
+    title: "郵輪",
     subMenu: [
       {
         title: "周边目的地",
@@ -30,7 +30,7 @@ export const sideMenuList = [
     ],
   },
   {
-    title: "国内游",
+    title: "酒店+景點",
     subMenu: [
       {
         title: "广东",
@@ -47,7 +47,7 @@ export const sideMenuList = [
     ],
   },
   {
-    title: "东南亚",
+    title: "當地旅行",
     subMenu: [
       {
         title: "热门目的地",
@@ -60,7 +60,7 @@ export const sideMenuList = [
     ],
   },
   {
-    title: "欧洲",
+    title: "票券旅行",
     subMenu: [
       {
         title: "热门邮轮航线",

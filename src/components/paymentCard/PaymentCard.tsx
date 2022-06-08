@@ -24,12 +24,12 @@ interface Item {
 
 const columns: ColumnsType<Item> = [
   {
-    title: "项目",
+    title: "項目",
     dataIndex: "item",
     key: "item",
   },
   {
-    title: "金额",
+    title: "金額",
     dataIndex: "amount",
     key: "amount",
   },
@@ -73,7 +73,7 @@ export const PaymentCard: React.FC<PropsType> = ({
       actions={[
         <Button type="primary" danger onClick={onCheckout} loading={loading}>
           <CheckCircleOutlined />
-          下单支付
+          下單支付
         </Button>,
         <Button onClick={onShoppingCartClear} loading={loading}>
           <DeleteOutlined />
@@ -83,7 +83,7 @@ export const PaymentCard: React.FC<PropsType> = ({
     >
       <Skeleton loading={loading} active>
         <Meta
-          title={<Title level={2}>总计</Title>}
+          title={<Title level={2}>總計</Title>}
           description={
             <Table<Item>
               columns={columns}

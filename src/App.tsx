@@ -10,7 +10,7 @@ import {
   SearchPage,
   ShoppingCartPage,
   PlaceOrderPage,
-} from "./views";
+} from "./pages";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "./redux/hooks";
 import { useDispatch } from "react-redux";

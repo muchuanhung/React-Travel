@@ -50,9 +50,10 @@
 
 .main-menu {
   margin: 0 auto;
-  padding: 0 6% !important;
+  padding: 0 25% !important;
   background-color: #fee370 !important;
-  color: white !important;
+  color: #5a5a5a !important;
+  font-weight: bolder;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -65,6 +66,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

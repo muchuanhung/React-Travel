@@ -46,7 +46,6 @@ export const addShoppingCartItem = createAsyncThunk(
   }
 );
 
-
 export const checkout = createAsyncThunk(
   "shoppingCart/checkout",
   async (jwt: string, thunkAPI) => {
@@ -62,7 +61,6 @@ export const checkout = createAsyncThunk(
     return data;
   }
 );
-
 
 export const clearShoppingCartItem = createAsyncThunk(
   "shoppingCart/clearShoppingCartItem",
@@ -130,7 +128,7 @@ export const shoppingCartSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
-      [checkout.pending.type]: (state) => {
+    [checkout.pending.type]: (state) => {
       state.loading = true;
     },
     [checkout.fulfilled.type]: (state, action) => {

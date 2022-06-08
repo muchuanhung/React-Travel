@@ -1,7 +1,6 @@
 import { Comment, Tooltip, List } from "antd";
 import React from "react";
 
-// 定義組件API2的data接口
 interface PropsType {
   data: {
     author: string;

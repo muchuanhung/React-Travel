@@ -1,7 +1,9 @@
+import styles from "./SignInForm.module.css";
 import { Form, Input, Button, Checkbox } from "antd";
-import styles from "./RegisterForm.module.css";
-// 導入api框架
-import axios from "axios";
+import { signIn } from "../../redux/user/slice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "../../redux/hooks";
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 const layout = {
@@ -12,21 +14,28 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-export const RegisterForm = () => {
+export const SignInForm = () => {
+  const loading = useSelector((s) => s.user.loading);
+  const jwt = useSelector((s) => s.user.token);
+  const error = useSelector((s) => s.user.error);
+
+  const dispatch = useDispatch();
   const history = useHistory();
 
-  const onFinish = async (values: any) => {
+  useEffect(() => {
+    if (jwt !== null) {
+      history.push("/");
+    }
+  }, [jwt]);
+
+  const onFinish = (values: any) => {
     console.log("Success:", values);
-    try {
-      await axios.post("http://123.56.149.216:8089/auth/register", {
+    dispatch(
+      signIn({
         email: values.username,
         password: values.password,
-        confirmPassword: values.confirm,
-      });
-      history.push("/signIn/");
-    } catch (error) {
-      alert("註冊失敗！");
-    }
+      })
+    );
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -58,32 +67,12 @@ export const RegisterForm = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item
-        label="Confirm Password"
-        name="confirm"
-        hasFeedback
-        rules={[
-          { required: true, message: "Please input your confirm password!" },
-          // 使用函數進行驗證
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue("password") === value) {
-                return Promise.resolve();
-              }
-              return Promise.reject("密碼確認不一致！");
-            },
-          }),
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
-
       <Form.Item {...tailLayout} name="remember" valuePropName="checked">
         <Checkbox>Remember me</Checkbox>
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={loading}>
           Submit
         </Button>
       </Form.Item>

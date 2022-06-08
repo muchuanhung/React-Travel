@@ -20,9 +20,9 @@ import { Dispatch } from "redux";
 const mapStateToProps = (state: RootState) => {
   return {
     language: state.language.language,
-    languageList: state.language.languageList
-  }
-}
+    languageList: state.language.languageList,
+  };
+};
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
@@ -44,7 +44,7 @@ class HeaderComponnet extends React.Component<PropsType> {
   // type 類型名稱 playload 任意類型的key 向store dispatch new state
   menuClickHandler = (e) => {
     console.log(e);
-    this.props.changeLanguage(e.key)
+    this.props.changeLanguage(e.key);
   };
 
   render() {
@@ -59,7 +59,7 @@ class HeaderComponnet extends React.Component<PropsType> {
               overlay={
                 /* 加入點擊事件的監聽action */
                 <Menu onClick={this.menuClickHandler}>
-                     {this.props.languageList.map((l) => {
+                  {this.props.languageList.map((l) => {
                     return <Menu.Item key={l.code}>{l.name}</Menu.Item>;
                   })}
                 </Menu>
@@ -69,8 +69,12 @@ class HeaderComponnet extends React.Component<PropsType> {
               {this.props.language === "zh" ? "中文" : "English"}
             </Dropdown.Button>
             <Button.Group className={styles["button-group"]}>
-              <Button onClick={() => history.push("register")}>{t("header.register")}</Button>
-              <Button onClick={() => history.push("signin")}>{t("header.signin")}</Button>
+              <Button onClick={() => history.push("register")}>
+                {t("header.register")}
+              </Button>
+              <Button onClick={() => history.push("signin")}>
+                {t("header.signin")}
+              </Button>
             </Button.Group>
           </div>
         </div>
@@ -79,7 +83,7 @@ class HeaderComponnet extends React.Component<PropsType> {
           <span onClick={() => history.push("/")}>
             <img src={logo} alt="logo" className={styles["App-logo"]} />
             <Typography.Title level={4} className={styles.title}>
-            {t("header.title")}
+              {t("header.title")}
             </Typography.Title>
           </span>
 
@@ -106,6 +110,7 @@ class HeaderComponnet extends React.Component<PropsType> {
   }
 }
 
-export const Header = connect(mapStateToProps, mapDispatchToProps)(
-  withTranslation()(withRouter(HeaderComponnet))
-);
+export const Header = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTranslation()(withRouter(HeaderComponnet)));

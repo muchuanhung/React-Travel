@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { FilterTag } from "./FilterTag";
 import { Typography, Divider } from "antd";
 const { Text } = Typography;
 
@@ -15,10 +16,10 @@ export const Filter: React.FC<PropsType> = ({ title, tags }) => {
       </Text>
       {tags.map((t, index) => {
         if (index === tags.length - 1)
-          return < div key={`filter${index}`}>{t}</div>;
+          return <FilterTag key={`filter${index}`}>{t}</FilterTag>;
         return (
           <span key={`filter${index}`}>
-            <div>{t}</div>
+            <FilterTag>{t}</FilterTag>
             <Divider type="vertical" />
           </span>
         );

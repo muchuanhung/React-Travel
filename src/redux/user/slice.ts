@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { stat } from "fs";
 
 // 無狀態ＪＷＴ登入驗證機制
 interface UserState {

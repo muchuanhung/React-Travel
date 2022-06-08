@@ -25,7 +25,7 @@ export class PaymentForm extends React.Component {
 
   render() {
     return (
-      <div id="PaymentForm" style={{ marginTop: 50 }}>
+      <div id="PaymentForm" style={{marginTop: 50}}>
         <Cards
           cvc={this.state.cvc}
           expiry={this.state.expiry}

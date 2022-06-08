@@ -3,11 +3,11 @@ import { RootState } from "../store";
 import axios from "axios";
 
 export const FETCH_RECOMMEND_PRODUCTS_START = 
-    "FETCH_RECOMMEND_PRODUCTS_START"; // 正在調用推薦訊息api
+    "FETCH_RECOMMEND_PRODUCTS_START"; // 正在调用推荐信息api
 export const FETCH_RECOMMEND_PRODUCTS_SUCCESS =
-  "FETCH_RECOMMEND_PRODUCTS_SUCCESS"; // 推薦信息api調用成功
+  "FETCH_RECOMMEND_PRODUCTS_SUCCESS"; // 推荐信息api调用成功
 export const FETCH_RECOMMEND_PRODUCTS_FAIL = 
-    "FETCH_RECOMMEND_PRODUCTS_FAIL"; // 推薦信息api調用失败
+    "FETCH_RECOMMEND_PRODUCTS_FAIL"; // 推荐信息api调用失败
 
 interface FetchRecommendProductStartAction {
     type: typeof FETCH_RECOMMEND_PRODUCTS_START
@@ -34,7 +34,6 @@ export const fetchRecommendProductStartActionCreator = (): FetchRecommendProduct
   };
 };
 
-// 調用api獲取成功返回data
 export const fetchRecommendProductSuccessActionCreator = (data) : FetchRecommendProductSuccessAction => {
     return {
         type: FETCH_RECOMMEND_PRODUCTS_SUCCESS,
@@ -42,7 +41,6 @@ export const fetchRecommendProductSuccessActionCreator = (data) : FetchRecommend
     }
 }
 
-// 調用api獲取失敗返回error
 export const fetchRecommendProductFailActionCreator = (error):FetchRecommendProductFailAction => {
     return {
         type: FETCH_RECOMMEND_PRODUCTS_FAIL,
@@ -52,9 +50,9 @@ export const fetchRecommendProductFailActionCreator = (error):FetchRecommendProd
 
 
 // thunk 可以返回一个函数，而不一定是js对象
-// 在一个thunk action中可以完成一些列連續的action操作
-// 并且可以處理異步邏輯
-// 業務邏輯可以从ui層面挪到这里，代码分層會更清晰
+// 在一个thunk action中可以完成一些列连续的action操作
+// 并且可以处理异步逻辑
+// 业务逻辑可以从ui层面挪到这里，代码分层会更清晰
 export const giveMeDataActionCreator = (): ThunkAction<
   void,
   RootState,
@@ -68,7 +66,6 @@ export const giveMeDataActionCreator = (): ThunkAction<
     );
     dispatch(fetchRecommendProductSuccessActionCreator(data));
   } catch (error) {
-    // @ts-ignore：无法被执行的代码的错误
     dispatch(fetchRecommendProductFailActionCreator(error.message));
   }
 };

@@ -38,9 +38,7 @@ export const Header: React.FC = () => {
   const jwt = useSelector((s) => s.user.token);
   const [username, setUsername] = useState("");
 
-  // @ts-ignore：无法被执行的代码的错误
   const shoppingCartItems = useSelector((s) => s.shoppingCart.items);
-  // @ts-ignore：无法被执行的代码的错误
   const shoppingCartLoading = useSelector((s) => s.shoppingCart.loading);
 
   useEffect(() => {
