@@ -45,57 +45,56 @@ export const ProductIntro: React.FC<PropsType> = ({
   rating,
   pictures,
 }) => {
-
-    const tableDataSource: RowType[] = [
-      {
-        key: 0,
-        title: "路线名称",
-        description: title,
-      },
-      {
-        key: 1,
-        title: "价格",
-        description: (
-          <>
-            ¥{" "}
-            <Typography.Text type="danger" strong>
-              {price}
-            </Typography.Text>
-          </>
-        ),
-      },
-      {
-        key: 2,
-        title: "限时抢购折扣",
-        description: discount ? (
-          <>
-            ¥ <Typography.Text delete>{price}</Typography.Text>{" "}
-            <Typography.Text type="danger" strong>
-              ¥ {discount}
-            </Typography.Text>
-          </>
-        ) : (
-          "暂无折扣"
-        ),
-      },
-      {
-        key: 2,
-        title: "领取优惠",
-        description: coupons ? discount : "无优惠券可领",
-      },
-      {
-        key: 2,
-        title: "线路评价",
-        description: (
-          <>
-            <Rate allowHalf defaultValue={+rating} />
-            <Typography.Text style={{ marginLeft: 10 }}>
-              {rating} 星
-            </Typography.Text>
-          </>
-        ),
-      },
-    ];
+  const tableDataSource: RowType[] = [
+    {
+      key: 0,
+      title: "路線名稱",
+      description: title,
+    },
+    {
+      key: 1,
+      title: "价格",
+      description: (
+        <>
+          ${" "}
+          <Typography.Text type="danger" strong>
+            {price}
+          </Typography.Text>
+        </>
+      ),
+    },
+    {
+      key: 2,
+      title: "限时折扣",
+      description: discount ? (
+        <>
+          $ <Typography.Text delete>{price}</Typography.Text>{" "}
+          <Typography.Text type="danger" strong>
+            {discount}
+          </Typography.Text>
+        </>
+      ) : (
+        "暂无折扣"
+      ),
+    },
+    {
+      key: 2,
+      title: "領取優惠",
+      description: coupons ? discount : "暫無優惠券",
+    },
+    {
+      key: 2,
+      title: "路線評價",
+      description: (
+        <>
+          <Rate allowHalf defaultValue={+rating} />
+          <Typography.Text style={{ marginLeft: 10 }}>
+            {rating} 星
+          </Typography.Text>
+        </>
+      ),
+    },
+  ];
 
   return (
     <div className={styles["intro-container"]}>
@@ -103,7 +102,7 @@ export const ProductIntro: React.FC<PropsType> = ({
       <Typography.Text>{shortDescription}</Typography.Text>
       <div className={styles["intro-detail-content"]}>
         <Typography.Text style={{ marginLeft: 20 }}>
-          ¥ <span className={styles["intro-detail-strong-text"]}>{price}</span>{" "}
+          $ <span className={styles["intro-detail-strong-text"]}>{price}</span>{" "}
           /人起
         </Typography.Text>
         <Typography.Text style={{ marginLeft: 50 }}>

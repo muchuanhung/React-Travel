@@ -15,12 +15,12 @@ interface OrderItem {
 
 const columns: ColumnsType<OrderItem> = [
   {
-    title: "产品",
+    title: "產品",
     dataIndex: "item",
     key: "item",
   },
   {
-    title: "价格",
+    title: "價格",
     dataIndex: "amount",
     key: "amount",
   },
@@ -47,7 +47,7 @@ export const CheckOutCard: React.FC<PropsType> = ({
           <>
             <Text delete>¥ {i.originalPrice} </Text>{" "}
             <Text type="danger" strong>
-              ¥ {i.originalPrice * i.discountPresent}
+              $ {i.originalPrice * i.discountPresent}
             </Text>
           </>
         ),
@@ -72,7 +72,7 @@ export const CheckOutCard: React.FC<PropsType> = ({
         ) : (
           <Button type="primary" danger onClick={onCheckout} loading={loading}>
             <CheckCircleOutlined />
-            支付
+            付款
           </Button>
         ),
       ]}
@@ -81,7 +81,7 @@ export const CheckOutCard: React.FC<PropsType> = ({
         <Meta
           title={
             <Title level={2}>
-              {order && order.state === "Completed" ? "支付成功" : "总计"}
+              {order && order.state === "Completed" ? "付款成功" : "總計"}
             </Title>
           }
           description={

@@ -31,14 +31,14 @@ const ProductImageComponent: React.FC<PropsType> = ({
           src={imageSrc}
           height={285}
           width={490}
-          style={{ borderRadius: "5px" }}
+          style={{ borderRadius: "5px", objectFit: "cover" }}
         />
       ) : (
         <Image
           src={imageSrc}
           height={120}
           width={240}
-          style={{ borderRadius: "5px" }}
+          style={{ borderRadius: "5px", objectFit: "cover" }}
         />
       )}
       <div style={{ display: "flex", flexDirection: "column" }}>

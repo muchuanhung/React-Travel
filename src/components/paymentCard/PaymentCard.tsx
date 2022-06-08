@@ -53,12 +53,12 @@ export const PaymentCard: React.FC<PropsType> = ({
   const paymentData: Item[] = [
     {
       key: 1,
-      item: "原价",
-      amount: <Text delete>¥ {originalPrice}</Text>,
+      item: "原價",
+      amount: <Text delete>$ {originalPrice}</Text>,
     },
     {
       key: 3,
-      item: "现价",
+      item: "特價",
       amount: (
         <Title type="danger" level={2}>
           ¥ {price}

@@ -50,7 +50,8 @@
 
 .main-menu {
   margin: 0 auto;
-  padding: 0 25% !important;
+  padding: 0 20% !important;
+  display: flex !important;
   background-color: #fee370 !important;
   color: #5a5a5a !important;
   font-weight: bolder;
