@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <BrowserRouter>
+      <BrowserRouter basename="/React-travel">
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/signIn" component={SignInPage} />
