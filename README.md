@@ -2,7 +2,6 @@
 
 #### This is a website of an ecommerce store built by React and Typescript.
 
-#### ☞ ☞ Take a look at this [React-travel](https://muchuanhung.github.io/React-travel/). 👀
 ![GITHUB](https://github.com/muchuanhung/React-travel/blob/main/React-travel%20(1).gif)
 
 
@@ -39,7 +38,6 @@ git clone https://github.com/muchuanhung/React-travel.git
   ```bash
   npm install
   ```
-- 刪除 node-module 重新安裝 npm-install
 
 ### Compiles and hot-reloads for development
 
