@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/React-travel/static/css/main.cdad5a42.chunk.css",
+    "main.js": "/React-travel/static/js/main.10679f5a.chunk.js",
+    "main.js.map": "/React-travel/static/js/main.10679f5a.chunk.js.map",
+    "runtime-main.js": "/React-travel/static/js/runtime-main.3dd7065d.js",
+    "runtime-main.js.map": "/React-travel/static/js/runtime-main.3dd7065d.js.map",
+    "static/css/2.587875d6.chunk.css": "/React-travel/static/css/2.587875d6.chunk.css",
+    "static/js/2.b57b5439.chunk.js": "/React-travel/static/js/2.b57b5439.chunk.js",
+    "static/js/2.b57b5439.chunk.js.map": "/React-travel/static/js/2.b57b5439.chunk.js.map",
+    "index.html": "/React-travel/index.html",
+    "static/css/2.587875d6.chunk.css.map": "/React-travel/static/css/2.587875d6.chunk.css.map",
+    "static/css/main.cdad5a42.chunk.css.map": "/React-travel/static/css/main.cdad5a42.chunk.css.map",
+    "static/js/2.b57b5439.chunk.js.LICENSE.txt": "/React-travel/static/js/2.b57b5439.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/React-travel/static/media/Loftygoals-Regular.8afbffef.otf",
+    "static/media/burger-226125.5ab8698b.png": "/React-travel/static/media/burger-226125.5ab8698b.png",
+    "static/media/carousel_1.825947f0.jpg": "/React-travel/static/media/carousel_1.825947f0.jpg",
+    "static/media/carousel_2.9186571f.jpg": "/React-travel/static/media/carousel_2.9186571f.jpg",
+    "static/media/carousel_3.c855cf3d.jpg": "/React-travel/static/media/carousel_3.c855cf3d.jpg",
+    "static/media/cereales-226142.bee3164f.png": "/React-travel/static/media/cereales-226142.bee3164f.png",
+    "static/media/dominos-226179.2321947b.png": "/React-travel/static/media/dominos-226179.2321947b.png",
+    "static/media/green-226210.fe9b9a5f.png": "/React-travel/static/media/green-226210.fe9b9a5f.png",
+    "static/media/hardees-226220.ea7a5062.png": "/React-travel/static/media/hardees-226220.ea7a5062.png",
+    "static/media/kfc-226245.ccc755d1.png": "/React-travel/static/media/kfc-226245.ccc755d1.png",
+    "static/media/sider_1.e8593237.png": "/React-travel/static/media/sider_1.e8593237.png",
+    "static/media/sider_2.600e70c8.png": "/React-travel/static/media/sider_2.600e70c8.png",
+    "static/media/sider_3.d016ce66.png": "/React-travel/static/media/sider_3.d016ce66.png",
+    "static/media/tripadvisor.86616441.svg": "/React-travel/static/media/tripadvisor.86616441.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3dd7065d.js",
+    "static/css/2.587875d6.chunk.css",
+    "static/js/2.b57b5439.chunk.js",
+    "static/css/main.cdad5a42.chunk.css",
+    "static/js/main.10679f5a.chunk.js"
+  ]
+}
